@@ -1,4 +1,9 @@
 package co.edu.uniquindio.proyecto.Entidades;
 
-public class MedioPago {
+public enum MedioPago {
+
+    NEQUI,
+    VISA,
+    MASTERCARD,
+    DAVIPLATA
 }

@@ -1,4 +1,41 @@
 package co.edu.uniquindio.proyecto.Entidades;
 
-public class Cliente {
+import lombok.*;
+
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.io.Serializable;
+import java.util.List;
+
+@Entity
+@NoArgsConstructor
+@ToString
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+public class Cliente extends Persona implements Serializable {
+
+    @Column(nullable = false)
+    private Boolean estado;
+
+    @Column(nullable = false, length = 200)
+    private String urlFoto;
+
+    @ElementCollection
+    private List<String> telefonos;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Compra> compras;
+
+    @OneToMany(mappedBy = "Cliente")
+    private List<String> cupones;
+    @Builder
+    public Cliente(String nombre, String correo, String password, Boolean estado, String urlFoto, List<String> telefonos) {
+        super(nombre, correo, password);
+        this.estado = false;
+        this.urlFoto = urlFoto;
+        this.telefonos = telefonos;
+    }
 }

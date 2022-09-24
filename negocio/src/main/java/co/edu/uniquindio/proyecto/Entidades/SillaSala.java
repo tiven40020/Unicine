@@ -1,4 +1,25 @@
 package co.edu.uniquindio.proyecto.Entidades;
 
-public class SillaSala {
+import lombok.*;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
+
+@Entity
+@NoArgsConstructor
+@ToString
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+public class SillaSala implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
+    private Integer codigo;
+
+    private Double precio;
 }
