@@ -11,7 +11,7 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
-@ToString
+@ToString(callSuper = true)
 @Getter
 @Setter
 public class Cliente extends Persona implements Serializable {
@@ -33,10 +33,11 @@ public class Cliente extends Persona implements Serializable {
     @ToString.Exclude
     private List<Cupon> cupones;
     @Builder
-    public Cliente(String nombre, String correo, String password, Boolean estado, String urlFoto, List<String> telefonos) {
+    public Cliente(String nombre, String correo, String password,String urlFoto, List<String> telefonos) {
         super(nombre, correo, password);
-        this.estado = false;
         this.urlFoto = urlFoto;
         this.telefonos = telefonos;
+        this.estado = false;
     }
+
 }
