@@ -19,9 +19,16 @@ public class Cupon implements Serializable {
     @EqualsAndHashCode.Include
     private Integer codigo;
 
+    @Column(nullable = false, length = 100)
     private String descuento;
 
     private Boolean estado;
 
     private Date vencimiento;
+
+    @OneToOne(mappedBy = "cupon")
+    private Compra compra;
+
+    @ManyToOne
+    private Cliente cliente;
 }

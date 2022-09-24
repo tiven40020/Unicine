@@ -2,11 +2,9 @@ package co.edu.uniquindio.proyecto.Entidades;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -21,9 +19,15 @@ public class Confiteria implements Serializable {
     @EqualsAndHashCode.Include
     private Integer codigo;
 
+    @Column(nullable = false, length = 100)
     private String nombre;
 
+    @Column(nullable = false, length = 100)
     private Double precio;
 
+    @Column(nullable = false, length = 100)
     private String imagen;
+
+    @ManyToMany(mappedBy = "compra")
+    private List<Compra> compras;
 }

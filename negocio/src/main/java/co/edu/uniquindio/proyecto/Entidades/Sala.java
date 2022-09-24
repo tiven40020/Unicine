@@ -2,11 +2,9 @@ package co.edu.uniquindio.proyecto.Entidades;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @ToString
@@ -21,5 +19,17 @@ public class Sala implements Serializable {
     @EqualsAndHashCode.Include
     private Integer codigo;
 
+    @Column(nullable = false, length = 100)
     private String nombre;
+
+    @ManyToOne
+    private Teatro teatro;
+
+    @OneToMany(mappedBy = "sala")
+    @ToString.Exclude
+    private List<SillaSala> sillaSalas;
+
+    @OneToMany(mappedBy = "sala")
+    @ToString.Exclude
+    private List<Funcion> funciones;
 }

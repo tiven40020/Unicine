@@ -2,12 +2,10 @@ package co.edu.uniquindio.proyecto.Entidades;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @ToString
@@ -23,7 +21,13 @@ public class AdministradorTeatro implements Serializable {
     private Integer codigo;
 
     @Email
+    @Column(nullable = false, length = 100, unique = true)
     private String correo;
 
+    @Column(nullable = false, length = 100)
     private String password;
+
+    @OneToMany(mappedBy = "administradorTeatro")
+    @ToString.Exclude
+    private List<Teatro> teatros;
 }

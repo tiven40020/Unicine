@@ -2,11 +2,9 @@ package co.edu.uniquindio.proyecto.Entidades;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @ToString
@@ -21,5 +19,10 @@ public class Ciudad implements Serializable {
     @EqualsAndHashCode.Include
     private Integer codigo;
 
+    @Column(nullable = false, length = 100)
     private String nombre;
+
+    @OneToMany(mappedBy = "ciudad")
+    @ToString.Exclude
+    private List<Teatro> teatros;
 }

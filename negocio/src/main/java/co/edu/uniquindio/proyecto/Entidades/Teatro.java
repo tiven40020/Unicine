@@ -2,11 +2,9 @@ package co.edu.uniquindio.proyecto.Entidades;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @ToString
@@ -24,4 +22,14 @@ public class Teatro implements Serializable {
     private String direccion;
 
     private Integer telefono;
+
+    @ManyToOne
+    private Ciudad ciudad;
+
+    @OneToMany(mappedBy = "teatro")
+    @ToString.Exclude
+    private List<Sala> salas;
+
+    @ManyToOne
+    private AdministradorTeatro administradorTeatro;
 }

@@ -2,12 +2,10 @@ package co.edu.uniquindio.proyecto.Entidades;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -26,7 +24,23 @@ public class Compra implements Serializable {
 
     private Date fechaCompra;
 
+    @Column(length = 100)
     private Double valorTotal;
+
+    @ManyToOne
+    private Funcion funcion;
+
+    @ManyToMany
+    private List<SillaSala> sillaSalas;
+
+    @ManyToMany
+    private List<Confiteria> confiterias;
+
+    @ManyToOne
+    private Cliente cliente;
+
+    @OneToOne
+    private Cupon cupon;
 
 
 }

@@ -2,11 +2,10 @@ package co.edu.uniquindio.proyecto.Entidades;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+
 @Entity
 @ToString
 @NoArgsConstructor
@@ -22,5 +21,9 @@ public class Silla implements Serializable {
     private String fila;
 
     private String columna;
+
+    @OneToMany(mappedBy = "silla")
+    @ToString.Exclude
+    private List<SillaSala> sillaSalas;
 }
 

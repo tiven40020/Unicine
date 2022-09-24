@@ -14,7 +14,6 @@ import java.util.List;
 @ToString
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Cliente extends Persona implements Serializable {
 
     @Column(nullable = false)
@@ -27,10 +26,12 @@ public class Cliente extends Persona implements Serializable {
     private List<String> telefonos;
 
     @OneToMany(mappedBy = "cliente")
+    @ToString.Exclude
     private List<Compra> compras;
 
-    @OneToMany(mappedBy = "Cliente")
-    private List<String> cupones;
+    @OneToMany(mappedBy = "cliente")
+    @ToString.Exclude
+    private List<Cupon> cupones;
     @Builder
     public Cliente(String nombre, String correo, String password, Boolean estado, String urlFoto, List<String> telefonos) {
         super(nombre, correo, password);
