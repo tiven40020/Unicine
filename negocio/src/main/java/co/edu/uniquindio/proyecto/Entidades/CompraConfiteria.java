@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -12,22 +11,20 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Horario implements Serializable {
+public class CompraConfiteria implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Integer codigo;
 
-    private String dia;
+    private Double precio;
 
-    private String hora;
+    private Integer unidades;
 
-    private String fechaInicio;
+    @ManyToOne
+    private Confiteria confiteria;
 
-    private String fechaFin;
-
-    @OneToMany(mappedBy = "horario")
-    @ToString.Exclude
-    private List<Funcion> funciones;
+    @ManyToOne
+    private Compra compra;
 }

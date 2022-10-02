@@ -1,5 +1,7 @@
 package co.edu.uniquindio.proyecto.Entidades;
 
+
+
 public enum Generos {
 
     ACCION,
@@ -8,6 +10,6 @@ public enum Generos {
     CIENCIA_FICCION,
     ANIMADA,
     DRAMA,
-    TERROR
+    TERROR;
 
 }

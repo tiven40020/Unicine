@@ -11,17 +11,10 @@ import java.io.Serializable;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Administrador implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Include
-    private Integer codigo;
+public class Administrador extends Persona implements Serializable {
 
-    @Email
-    @Column(nullable = false, length = 100, unique = true)
-    private String correo;
-
-    @Column(nullable = false,length = 100)
-    private String password;
+    public Administrador(String correo, String password) {
+        super(correo, password);
+    }
 }

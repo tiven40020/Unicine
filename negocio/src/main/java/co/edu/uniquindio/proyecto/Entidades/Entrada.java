@@ -4,26 +4,26 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
-@ToString
 @NoArgsConstructor
+@ToString
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Silla implements Serializable {
+public class Entrada implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    private Integer numero;
+    private Integer codigo;
+
+    private Double precio;
 
     private String fila;
 
     private String columna;
 
-    @OneToMany(mappedBy = "silla")
-    @ToString.Exclude
-    private List<SillaSala> sillaSalas;
+    @ManyToOne
+    private Compra compra;
 }
-

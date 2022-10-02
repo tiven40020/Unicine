@@ -36,7 +36,7 @@ public class Pelicula implements Serializable {
     @Column(nullable = false, length = 100)
     private String reparto;
 
-    private Generos genero;
+    private Generos generos;
 
     @OneToMany(mappedBy = "pelicula")
     @ToString.Exclude

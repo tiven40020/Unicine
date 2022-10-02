@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @ToString
@@ -20,15 +21,18 @@ public class Cupon implements Serializable {
     private Integer codigo;
 
     @Column(nullable = false, length = 100)
+    private String descripcion;
+
+    @Column(nullable = false, length = 100)
     private String descuento;
 
-    private Boolean estado;
+    @Column(nullable = false, length = 100)
+    private String criterio;
 
     private Date vencimiento;
 
-    @OneToOne(mappedBy = "cupon")
-    private Compra compra;
+    @OneToMany(mappedBy = "cupon")
+    private List<CuponCliente> cuponClientes;
 
-    @ManyToOne
-    private Cliente cliente;
+
 }

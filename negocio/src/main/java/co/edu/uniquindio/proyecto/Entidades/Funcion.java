@@ -19,6 +19,8 @@ public class Funcion implements Serializable {
     @EqualsAndHashCode.Include
     private Integer codigo;
 
+    private Double precio;
+
     @ManyToOne
     private Horario horario;
 

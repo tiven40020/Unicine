@@ -13,21 +13,11 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class AdministradorTeatro implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Include
-    private Integer codigo;
-
-    @Email
-    @Column(nullable = false, length = 100, unique = true)
-    private String correo;
-
-    @Column(nullable = false, length = 100)
-    private String password;
+public class AdministradorTeatro extends Persona implements Serializable {
 
     @OneToMany(mappedBy = "administradorTeatro")
     @ToString.Exclude
     private List<Teatro> teatros;
+
+
 }

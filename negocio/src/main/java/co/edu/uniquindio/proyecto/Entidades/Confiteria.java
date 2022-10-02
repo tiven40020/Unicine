@@ -28,6 +28,6 @@ public class Confiteria implements Serializable {
     @Column(nullable = false, length = 100)
     private String imagen;
 
-    @ManyToMany(mappedBy = "compra")
-    private List<Compra> compras;
+    @OneToMany(mappedBy = "confiteria")
+    private List<CompraConfiteria> CompraConfiterias;
 }
