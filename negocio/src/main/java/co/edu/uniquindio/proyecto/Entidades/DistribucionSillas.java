@@ -20,7 +20,7 @@ public class DistribucionSillas implements Serializable {
 
     private String esquema;
 
-    private Integer totatSillas;
+    private Integer totalSillas;
 
     private String filas;
 
